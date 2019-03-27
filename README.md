@@ -1,9 +1,9 @@
 # Project_Solanum_lycopersicum
-#  Initial steps 
+#  Initial steps:
 ## This work was designed by a project in R, for proper operation must download all the "Project_Solanum_lycopersicum" uncompress folder and then open the project in R by double clip in "MAIN.R", then load the "Script_Solanum_lycopersicum", by default all database and folders will be linked, it will not be necessary to change any work address (i.e. "C:\Users\Project_Solanum_lycopersicum")
 
 
-#  Abbreviations of the database   ---
+#  Abbreviations of the database:
 ## plant: code assigned to each plant within each the treatment deficiency
 ## deficiency: this is deficiency factor with two levels ("(-) N" and "C")
  ###  (-) N: nitrogen deficiency Hoagland solution
