@@ -19,7 +19,7 @@
 ## RMR: root-to-total dry mass ratio
 ## LMR: leaf-to-total dry mass ratio
 ## SMR: shoot-to-total dry mass ratio
-## RAD: root-to-adoveground dry mass ratio
+## RAB: root-to-aboveground dry mass ratio
 ## RLR: root-to-leaf dry mass ratio
 ## TDM: total dry mass (g)
 ## Chl_a: chlorophyll a (µg ml-1)
