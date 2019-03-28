@@ -31,6 +31,8 @@ if(!require(multcomp)){install.packages("multcomp")}
 if(!require(multcompView)){install.packages("multcompView")}
 if(!require(broom)){install.packages("broom")}
 if(!require(openxlsx)){install.packages("openxlsx")}
+if(!require(cowplot)){install.packages("cowplot")}
+if(!require(factoextra)){install.packages("factoextra")}
 
 # Functions
 error.bar.vertical<-function(x, y, se.y, col){arrows(x, y-se.y, x, y+se.y, code=3, angle=90, length=0.25, col=col)}
@@ -221,7 +223,7 @@ function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$
 function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$LMR)
 function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$SMR)
 function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$RLR)
-function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$RAD)
+function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$RAB)
 function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$TDM)
 
 function.test.residuals.normal(treatment=data2$deficiency_light, variable=data2$Chl_a)
@@ -512,8 +514,8 @@ dev.off()
 #------------------------------------------------
 df.PCA<-data.frame(data2$deficiency_light,data2$Fv.Fm,
                    data2$RMR, data2$LMR, data2$SMR,
-                   data2$NL,data2$H,data2$RAD,data2$TDM)
-names(df.PCA) <- c("Treatment", "Fv.Fm", "RMR", "LMR", "SMR","NL", "H","RAD","TDM")
+                   data2$NL,data2$H,data2$RAB,data2$TDM)
+names(df.PCA) <- c("Treatment", "Fv.Fm", "RMR", "LMR", "SMR","NL", "H","RAB","TDM")
 df.PCA = df.PCA[with(df.PCA, order(-TDM)), ]
 df.PCA<-na.omit(df.PCA)
 
@@ -605,14 +607,10 @@ dev.off()
 #------------------------------------------------
 df.PCA<-data.frame(data2$deficiency_light,data2$Fv.Fm,
                    data2$RMR, data2$LMR, data2$SMR,
-                   data2$NL,data2$H,data2$RAD,data2$TDM)
-names(df.PCA) <- c("Treatment", "Fv.Fm", "RMR", "LMR", "SMR","NL", "H","RAD","TDM")
+                   data2$NL,data2$H,data2$RAB,data2$TDM)
+names(df.PCA) <- c("Treatment", "Fv.Fm", "RMR", "LMR", "SMR","NL", "H","RAB","TDM")
 df.PCA = df.PCA[with(df.PCA, order(-TDM)), ]
 df.PCA<-na.omit(df.PCA)
-
-if(!require(cowplot)){install.packages("cowplot")}
-if(!require(factoextra)){install.packages("factoextra")}
-
 
 res.pca1 <- prcomp(df.PCA[, c(-1,-9)], scale = TRUE) # Remove Treatment and TDM
 quali.sup <- as.factor(df.PCA[,1]) # Only treatment
