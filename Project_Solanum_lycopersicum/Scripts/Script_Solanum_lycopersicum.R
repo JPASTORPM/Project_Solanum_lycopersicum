@@ -19,6 +19,7 @@ if(!grepl("Project_Solanum_lycopersicum", getwd())){
 # R Packages
 # The following commands will install these packages if they are not already installed, 
 # then you have to load the package, simply running this code again 
+if(!require(packrat)){install.packages("packrat")}
 if(!require(devtools)){install.packages("devtools")}
 if(!require(yarrr)){install.packages("yarrr")}
 if(!require(ggplot2)){install.packages("ggplot2")}
