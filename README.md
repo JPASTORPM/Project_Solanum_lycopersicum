@@ -22,7 +22,7 @@
 ## RAB: root-to-aboveground dry mass ratio
 ## RLR: root-to-leaf dry mass ratio
 ## TDM: total dry mass (g)
-## Chl_a: chlorophyll a (µg ml-1)
-## Chl_b: chlorophyll b (µg ml-1)
+## Chl_a: chlorophyll a (µg mL-1)
+## Chl_b: chlorophyll b (µg mL-1)
 ## Chl_a.b: chlorophyll a/b
-## Chl_total: total chlorophyll (µg ml-1)
+## Chl_total: total chlorophyll (µg mL-1)
