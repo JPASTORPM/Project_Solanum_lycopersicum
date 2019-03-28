@@ -32,11 +32,11 @@ Fv.Fm: quantum yield of  photosystem II
 RMR: root-to-total dry mass ratio
 LMR: leaf-to-total dry mass ratio
 SMR: shoot-to-total dry mass ratio
-RAD: root-to-adoveground dry mass ratio
+RAB: root-to-aboveground dry mass ratio
 RLR: root-to-leaf dry mass ratio
 TDM: total dry mass (g)
-Chl_a: chlorophyll a (µg ml-1)
-Chl_b: chlorophyll b (µg ml-1)
+Chl_a: chlorophyll a (Âµg ml-1)
+Chl_b: chlorophyll b (Âµg ml-1)
 Chl_a.b: chlorophyll a/b
-Chl_total: total chlorophyll (µg ml-1)
+Chl_total: total chlorophyll (Âµg ml-1)
 -----------------------------------------
