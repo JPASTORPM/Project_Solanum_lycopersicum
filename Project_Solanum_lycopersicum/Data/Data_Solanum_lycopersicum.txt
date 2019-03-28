@@ -1,4 +1,4 @@
-plant	deficiency	light	date	time	NL	H	Fv.Fm	RMR	LMR	SMR	TDM	RAD	RLR	Chl_a	Chl_b	Chl_a.b	Chl_total
+plant	deficiency	light	date	time	NL	H	Fv.Fm	RMR	LMR	SMR	TDM	RAB	RLR	Chl_a	Chl_b	Chl_a.b	Chl_total
 10SN	(-) N	High	2018-09-19	1	4	3.3	0.721										
 11SN	(-) N	High	2018-09-19	1	4	5	0.737										
 12SN	(-) N	High	2018-09-19	1	4	5.5	0.764										
