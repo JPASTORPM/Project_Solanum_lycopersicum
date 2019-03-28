@@ -19,20 +19,23 @@ if(!grepl("Project_Solanum_lycopersicum", getwd())){
 # R Packages
 # The following commands will install these packages if they are not already installed, 
 # then you have to load the package, simply running this code again 
-if(!require(packrat)){install.packages("packrat")}
 if(!require(devtools)){install.packages("devtools")}
-if(!require(yarrr)){install.packages("yarrr")}
-if(!require(ggplot2)){install.packages("ggplot2")}
-if(!require(splitstackshape)){install.packages("splitstackshape")}
-if(!require(Rmisc)){install.packages("Rmisc")}
-if(!require(lsmeans)){install.packages("lsmeans")}
-if(!require(car)){install.packages("car")}
-if(!require(multcomp)){install.packages("multcomp")}
-if(!require(multcompView)){install.packages("multcompView")}
-if(!require(broom)){install.packages("broom")}
-if(!require(openxlsx)){install.packages("openxlsx")}
-if(!require(cowplot)){install.packages("cowplot")}
-if(!require(factoextra)){install.packages("factoextra")}
+if(!require(githubinstall)){devtools::install_github("hoxo-m/githubinstall")}
+if(!require(yarrr)){githubinstall("yarrr")}
+if(!require(yarrr)){githubinstall("yarrr")}
+if(!require(ggplot2)){githubinstall("ggplot2")}
+if(!require(splitstackshape)){githubinstall("splitstackshape")}
+if(!require(Rmisc)){githubinstall("Rmisc")}
+if(!require(lsmeans)){githubinstall("lsmeans")}
+if(!require(car)){githubinstall("car")}
+if(!require(multcomp)){githubinstall("multcomp")}
+if(!require(multcompView)){githubinstall("multcompView")}
+if(!require(broom)){githubinstall("broom")}
+if(!require(openxlsx)){githubinstall("openxlsx")}
+if(!require(cowplot)){githubinstall("cowplot")}
+if(!require(factoextra)){githubinstall("factoextra")}
+if(!require(ggtern)){githubinstall("ggtern")}
+if(!require(mixtools)) { githubinstall("mixtools");  require("mixtools") }
 
 # Functions
 error.bar.vertical<-function(x, y, se.y, col){arrows(x, y-se.y, x, y+se.y, code=3, angle=90, length=0.25, col=col)}
@@ -398,7 +401,6 @@ df<-na.omit(df)
 
 pdf(file = "Results/Figure/Fig. Ternary plot.pdf", width = 6*0.95, height = 5.5*0.95)
 par(mfrow=c(1,1),mgp = c(1.75,0.5,0), mar = c(1.5,3,1,1))
-if(!require(ggtern)){install.packages("ggtern")}
 a<-ggtern(data = df[-57,], aes(x = RMR, y = SMR, z = LMR)) +
     #the layers
     geom_mask() + #MASK UNDER POINTS
@@ -549,7 +551,6 @@ text(0.435,0.624, paste("r2= ", r2, "; ",p), cex=1.25)
 abline(reg, lwd=2, col="black", lty=2)
 legend("bottomleft", c("(-) N*High","(-) N*Low", "C*High", "C*Low"),pch=c(19,15,18,17),merge = F, bg = NULL,bty='n', h=FALSE, cex=1.25)
 
-if(!require("mixtools")) { install.packages("mixtools");  require("mixtools") }
 data_f.k2 = mvnormalmixEM(as.matrix(df.PCA[df.PCA$Treatment=="(-) N*High",c(3,4)]), k=2, maxit=100, epsilon=0.05) 
 data_f.k2$mu # estimated mean coordinates for the 2 multivariate Gaussians
 data_f.k2$sigma # estimated covariance matrix 
