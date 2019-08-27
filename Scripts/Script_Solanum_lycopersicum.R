@@ -8,15 +8,13 @@
 #------------------------------------------------
 # Initial steps: Packages & Functions
 #------------------------------------------------
-
-#Remove objects, graphics and script
 rm(list = ls()) # Remove all objects
 graphics.off()  # Remove all graphics
 cat("\014")     # Remove script in console
 if(!grepl("Project_Solanum_lycopersicum", getwd())){
     x= cat(prompt = "Please set the working directory to the project folder")}
 
-# R Packages
+# R Packages, Important: Run row by row
 # The following commands will install these packages if they are not already installed, 
 # then you have to load the package, simply running this code again 
 if(!require(devtools)){install.packages("devtools")}
@@ -61,7 +59,7 @@ fun.table.anova<-function(variable,P1,P2,P3,P4){
     df<-round(as.numeric(kw[2]),0)
     P<-round(as.numeric(kw[3]),3)
     lsm = lsmeans(model, pairwise ~ Deficiency*Light, adjust="LSD")
-    t1<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2<-data.frame(t1[c(1)],t1[c(2)],t1[c(3)],t1[c(4)],t1[c(8)])
     t2$Deficiency_Light<-paste(t2$Deficiency,t2$Light, sep="*")
     t2$KW<-KW
@@ -78,7 +76,7 @@ fun.table.anova<-function(variable,P1,P2,P3,P4){
     df<-round(as.numeric(kw[2]),0)
     P<-round(as.numeric(kw[3]),3)
     lsm = lsmeans(model, pairwise ~ Deficiency*Light, adjust="LSD")
-    t1<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2<-data.frame(t1[c(1)],t1[c(2)],t1[c(3)],t1[c(4)],t1[c(8)])
     t2$Deficiency_Light<-paste(t2$Deficiency,t2$Light, sep="*")
     t2$KW<-KW
@@ -95,7 +93,7 @@ fun.table.anova<-function(variable,P1,P2,P3,P4){
     df<-round(as.numeric(kw[2]),0)
     P<-round(as.numeric(kw[3]),3)
     lsm = lsmeans(model, pairwise ~ Deficiency*Light, adjust="LSD")
-    t1<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2<-data.frame(t1[c(1)],t1[c(2)],t1[c(3)],t1[c(4)],t1[c(8)])
     t2$Deficiency_Light<-paste(t2$Deficiency,t2$Light, sep="*")
     t2$KW<-KW
@@ -111,8 +109,9 @@ fun.table.anova<-function(variable,P1,P2,P3,P4){
     KW<-round(as.numeric(kw[1]),2)
     df<-round(as.numeric(kw[2]),0)
     P<-round(as.numeric(kw[3]),3)
+    require(lsmeans)
     lsm = lsmeans(model, pairwise ~ Deficiency*Light, adjust="LSD")
-    t1<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2<-data.frame(t1[c(1)],t1[c(2)],t1[c(3)],t1[c(4)],t1[c(8)])
     t2$Deficiency_Light<-paste(t2$Deficiency,t2$Light, sep="*")
     t2$KW<-KW
@@ -142,7 +141,7 @@ fun.table.nested.anova<-function(variable,P4,d1,d2){
     names(P)<-c("p","Factor")
     
     lsm = lsmeans(model, pairwise ~ deficiency*light, adjust="LSD")
-    t1<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2<-data.frame(t1[c(1)],t1[c(2)],t1[c(3)],t1[c(4)])
     t2$Deficiency_Light<-paste(t2$deficiency, t2$light, sep="*")
     
@@ -150,14 +149,14 @@ fun.table.nested.anova<-function(variable,P4,d1,d2){
     
     model_high = aov(d1 ~ deficiency, data= data2[data2$light=="High",])
     lsm = lsmeans(model_high, pairwise ~ deficiency, adjust="LSD")
-    t1_high<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1_high<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2_high<-data.frame(t1_high[c(1)],t1_high[c(2)],t1_high[c(3)],t1_high[c(7)])
     t2_high$Deficiency_Light<-paste(t2_high$deficiency,"High", sep="*")
     t2_high$.group<-rm.whitespace(t2_high$.group)
     
     model_low = aov(d2 ~ deficiency, data= data2[data2$light=="Low",])
     lsm = lsmeans(model_high, pairwise ~ deficiency, adjust="LSD")
-    t1_low<-data.frame(cld(lsm, alpha=.05, Letters=letters))
+    t1_low<-data.frame(cld(lsm[[1]], alpha=.05, Letters=letters))
     t2_low<-data.frame(t1_low[c(1)],t1_low[c(2)],t1_low[c(3)],t1_low[c(7)])
     t2_low$Deficiency_Light<-paste(t2_low$deficiency,"Low", sep="*")
     t2_low$.group<-rm.whitespace(t2_low$.group)
@@ -542,6 +541,7 @@ points(df.PCA$RMR[df.PCA$Treatment=="C*Low"], df.PCA$LMR[df.PCA$Treatment=="C*Lo
        col= colr[df.PCA$Z[df.PCA$Treatment=="C*Low"]], cex=2)#df.PCA$col[df.PCA$Treatment=="C*Low"], cex=2)
 reg<-lm(df.PCA$LMR~df.PCA$RMR)
 s_reg<-summary(reg)
+s_reg
 r2<-round(s_reg$r.squared, 2)
 i<-round(s_reg$coefficients[1,1],3)
 m<-round(s_reg$coefficients[2,1],3)
