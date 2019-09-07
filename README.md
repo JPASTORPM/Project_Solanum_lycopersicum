@@ -9,8 +9,8 @@
  ###  (-) N: nitrogen deficiency Hoagland solution
  ###  C: complete Hoagland solution
 ## light: this is light factor with two levels
- ###  High: 1600 mml m-2 s-1
- ###  Low: 800 mml m-2 s-1
+ ###  High: 439.8 micromol m-2 s-1 PPFD
+ ###  Low:  70.3  micromol m-2 s-1 PPFD
 ## time: 1 to 4 week
 ## date: yyy-mm-dd
 ## H: height (cm)
